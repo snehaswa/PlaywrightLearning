@@ -45,7 +45,24 @@ await page.waitForTimeout(10000);
 await page.pause();
 
 });
-test('UI Controls', async({page})=>
+test('UI Controls', async({browser})=>
 {
+const context=await browser.newContext();
+const page= await context.newPage();
+await page.goto("https://rahulshettyacademy.com/AutomationPractice/")
+const documentlink= await page.locator("a.blinkingText");
+//console.log (await documentlink.textContent());
+
+const [newPage]= await Promise.all(
+    [
+     context.waitForEvent('page'),
+     documentlink.click(), // Opens a new tab
+    ]);
+    
+await newPage.waitForLoadState();
+const text= await page.locator(".red").textContent();
+console.log(text);
+//await newPage.waitForTimeout(2000);
+
 
 });
