@@ -31,7 +31,7 @@ test('Open Rahul Shetty Academy login page', async ({ page }) => {
     }
      
     await page.locator("[routerlink*='cart']").click();
-    //sudo class locatorby using text and tag to see the product is added or showing in the cart
+    //sudo class locator by using text and tag to see the product is added or showing in the cart
    const bool= await page.locator("h3:has-text('iphone 13 pro')").isVisible();
    expect(bool).toBeTruthy();   
     //const cartProducts= page.locator('.cartSection h3');
